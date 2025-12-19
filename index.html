@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Kelompok - Kewarganegaraan</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Lora:ital,wght@1,500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- CSS RESET & VARIABLES --- */
+        :root {
+            --primary: #2c3e50;
+            /* Navy */
+            --secondary: #34495e;
+            --accent: #e67e22;
+            /* Orange */
+            --white: #ffffff;
+            --bg: #f0f2f5;
+            --text: #333;
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+            /* Mencegah scroll horizontal karena dekorasi */
+            position: relative;
+        }
+
+        /* --- DEKORASI BACKGROUND --- */
+        .bg-decoration {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.05;
+            color: var(--primary);
+        }
+
+        .icon-1 {
+            top: 15%;
+            left: 5%;
+            font-size: 15rem;
+            transform: rotate(-15deg);
+        }
+
+        .icon-2 {
+            bottom: 10%;
+            right: 5%;
+            font-size: 20rem;
+            transform: rotate(10deg);
+        }
+
+        .circle-shape {
+            position: absolute;
+            border-radius: 50%;
+            z-index: -1;
+            background: linear-gradient(135deg, #e67e22, #f1c40f);
+            opacity: 0.1;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            right: -50px;
+        }
+
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            bottom: 20%;
+            left: -50px;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a252f 100%);
+            color: var(--white);
+            padding: 60px 20px 100px 20px;
+            /* Padding bawah besar untuk efek overlap */
+            text-align: center;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            margin-bottom: -60px;
+            /* Agar konten naik ke atas header */
+            position: relative;
+            z-index: 1;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* --- CONTAINER UTAMA --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 80px 20px;
+            flex: 1;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* --- FEATURED RESEARCH SECTION (BARU) --- */
+        .research-frame {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            margin-bottom: 60px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            position: relative;
+            overflow: hidden;
+            border-top: 5px solid var(--accent);
+        }
+
+        /* Efek pita di pojok */
+        .badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(230, 126, 34, 0.4);
+        }
+
+        .research-img {
+            flex: 1;
+            max-width: 400px;
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .research-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .research-frame:hover .research-img img {
+            transform: scale(1.05);
+        }
+
+        .research-content {
+            flex: 1.5;
+            text-align: left;
+        }
+
+        .research-content h2 {
+            font-family: 'Lora', serif;
+            /* Font serif untuk kesan akademis */
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .research-content p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .research-stat {
+            display: inline-flex;
+            gap: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+            width: 100%;
+        }
+
+        .stat-item {
+            font-size: 0.9rem;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-item i {
+            color: var(--accent);
+        }
+
+        /* --- MEMBER GRID --- */
+        .section-label {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--secondary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .section-label::before,
+        .section-label::after {
+            content: "";
+            height: 2px;
+            width: 50px;
+            background: #ccc;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            justify-content: center;
+        }
+
+        /* --- MEMBER CARD --- */
+        .member-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            padding-bottom: 30px;
+            position: relative;
+        }
+
+        .member-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            height: 80px;
+            background: linear-gradient(135deg, var(--secondary) 0%, #2980b9 100%);
+            margin-bottom: -40px;
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            background: #fff;
+            border-radius: 50%;
+            border: 4px solid var(--white);
+            margin: 0 auto 15px auto;
+            object-fit: cover;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .info h3 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .info .nim {
+            display: inline-block;
+            color: #777;
+            font-size: 0.85rem;
+            background: #f4f4f4;
+            padding: 3px 12px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .btn-visit {
+            display: inline-block;
+            padding: 8px 25px;
+            background-color: var(--white);
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            border: 2px solid var(--accent);
+        }
+
+        .btn-visit:hover {
+            background-color: var(--accent);
+            color: var(--white);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: var(--primary);
+            color: var(--white);
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        /* Responsive Fix */
+        @media (max-width: 900px) {
+            .research-frame {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px;
+            }
+
+            .research-content {
+                text-align: center;
+            }
+
+            .research-img {
+                width: 100%;
+                height: 200px;
+            }
+
+            .research-stat {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            header {
+                padding-bottom: 80px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .research-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .icon-1,
+            .icon-2 {
+                display: none;
+            }
+
+            /* Sembunyikan ikon besar di HP */
+        }
+    </style>
+</head>
+
+<body>
+
+    <i class="fas fa-balance-scale bg-decoration icon-1"></i>
+    <i class="fas fa-gavel bg-decoration icon-2"></i>
+    <div class="circle-shape shape-1"></div>
+    <div class="circle-shape shape-2"></div>
+
+    <header>
+        <h1>Portofolio Kewarganegaraan</h1>
+        <p>Kelas A - Tahun Ajaran 2024/2025</p>
+    </header>
+
+    <div class="container">
+
+        <div class="research-frame">
+
+            <div class="research-img">
+                <img src="Laporan.png" alt="Ilustrasi Penelitian">
+            </div>
+
+            <div class="research-content">
+                <h2>Batas Kebebasan dan Tanggung Jawab: Analisis Penjarahan Rumah Ahmad Sahroni pada Aksi DPR 2025</h2>
+                <p>
+                    Sebuah studi kasus mendalam mengenai dinamika demokrasi, etika penyampaian pendapat di muka umum,
+                    dan implikasi hukum dari tindakan anarkis dalam konteks kewarganegaraan Indonesia.
+                </p>
+                <div class="research-stat">
+                    <div class="stat-item"><i class="fas fa-users"></i> 5 Anggota Peneliti</div>
+                    <div class="stat-item"><i class="fas fa-book-open"></i> Studi Kasus Hukum</div>
+                    <div class="stat-item"><i class="fas fa-calendar-alt"></i> 2025</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-label">Anggota Kelompok Peneliti</div>
+
+        <div class="team-grid">
+
+            <div class="member-card">
+                <div class="card-header"></div>
+                <img src="Wesley.jpeg" alt="Wesley Maximillian" class="avatar">
+                <div class="info">
+                    <h3>Wesley Maximillian</h3>
+                    <span class="nim">2410101001</span>
+                    <br>
+                    <a href="https://cikibber.github.io/portofolio-kewarganegaraan/" class="btn-visit">Lihat
+                        Portofolio</a>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <div class="card-header"></div>
+                <img src="Ceeley Richela.jpeg" alt="Ceeley Richela" class="avatar">
+                <div class="info">
+                    <h3>Ceeley Richela</h3>
+                    <span class="nim">2410101008</span>
+                    <br>
+                    <a href="https://portokwn.vercel.app/" class="btn-visit">Lihat Portofolio</a>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <div class="card-header"></div>
+                <img src="Cyril Natasha.jpeg" alt="Cyril Natasha" class="avatar">
+                <div class="info">
+                    <h3>Cyril Natasha</h3>
+                    <span class="nim">2410101009</span>
+                    <br>
+                    <a href="https://kewarganegaraancyrilnatashasetiawan.framer.website/" class="btn-visit">Lihat
+                        Portofolio</a>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <div class="card-header"></div>
+                <img src="Dierlyawan.jpeg" alt="Dierliwawan Wiguna" class="avatar">
+                <div class="info">
+                    <h3>Dierliwawan Wiguna</h3>
+                    <span class="nim">2410101013</span>
+                    <br>
+                    <a href="https://dierlyawanwiguna.wixsite.com/portofolio" class="btn-visit">Lihat Portofolio</a>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <div class="card-header"></div>
+                <img src="David Cungniago.png" alt="David Cungniago" class="avatar">
+                <div class="info">
+                    <h3>David Cungniago</h3>
+                    <span class="nim">2410101025</span>
+                    <br>
+                    <a href="https://davidcungniago.github.io/Portofolio-KWN/" class="btn-visit">Lihat Portofolio</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Kelompok Kewarganegaraan. Universitas Pradita.</p>
+    </footer>
+
+</body>
+
+</html>
